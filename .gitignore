@@ -1,4 +1,5 @@
-
+# ignore all tarball archives
+*.tar.gz
 # Replit agent state & local caches
 .local/
 .agent_state*/
