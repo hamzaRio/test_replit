@@ -98,4 +98,4 @@ Thumbs.db
 
 # Replit specific
 .replit
-replit.nix
+replit.nix*.tar.gz
