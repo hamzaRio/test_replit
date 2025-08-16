@@ -1,0 +1,29 @@
+services:
+  - type: web
+    name: marrakech-dunes-backend
+    env: node
+    plan: starter
+    region: frankfurt
+    buildCommand: npm install --legacy-peer-deps && npm run build --workspace=client && npm run build --workspace=server
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 5000
+      - key: MONGODB_URI
+        value: YOUR_MONGODB_URI_HERE
+      - key: SESSION_SECRET
+        value: YOUR_SESSION_SECRET_HERE
+      - key: JWT_SECRET
+        value: YOUR_JWT_SECRET_HERE
+      - key: CLIENT_URL
+        value: https://your-frontend-domain.vercel.app,http://localhost:5173
+      - key: WHATSAPP_RECEIVERS
+        value: YOUR_WHATSAPP_PHONE_NUMBERS
+    disk:
+      name: marrakech-assets
+      mountPath: /app/attached_assets
+      sizeGB: 1
+    autoDeploy: true

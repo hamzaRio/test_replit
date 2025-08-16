@@ -1,0 +1,26 @@
+{
+  "name": "marrakech-dunes-frontend",
+  "version": 2,
+  "public": true,
+  "builds": [
+    {
+      "src": "client/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "buildCommand": "cd client && npm i && npm run build",
+        "outputDirectory": "client/dist"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/client/dist/$1"
+    }
+  ],
+  "functions": {
+    "client/dist/index.html": {
+      "includeFiles": "client/dist/**"
+    }
+  }
+}
